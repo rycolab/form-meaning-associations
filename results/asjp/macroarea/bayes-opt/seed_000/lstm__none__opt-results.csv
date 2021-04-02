@@ -1,0 +1,2 @@
+test_loss,test_acc,val_loss,val_acc,best_epoch,embedding_size,hidden_size,concept_size,nlayers,dropout
+3.977578849924188,0.2655435418209369,4.031128448598264,0.25215485174583163,1,164,66,2,2,0.1818553854713113

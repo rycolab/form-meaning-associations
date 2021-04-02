@@ -1,0 +1,2 @@
+macroarea	fold	length	none	onehot	onehot-shuffle	train	dev	test	mi-onehot	unc-onehot	mi-onehot-shuffle	unc-onehot-shuffle	p_value-onehot	p_value-onehot-shuffle
+overall	1.5	5.557582616689042	3.8572146892547607	3.8451757431030273	3.867823600769043				0.012038946151733398	0.0031247204169631004	0.0226476788520813	0.005866924300789833	0.0	0.0
