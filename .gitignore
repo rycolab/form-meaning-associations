@@ -127,3 +127,8 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Project specific
+datasets/word2vec/
+checkpoints/
+*avg_seed_results_per_pos.tsv
