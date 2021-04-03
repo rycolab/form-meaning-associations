@@ -14,12 +14,10 @@ from util import util
 
 aspect = {
     'height': 7,
-    # 'font_scale': 1.8,
     'font_scale': 7.5,
     'labels': True,
     'name_suffix': '',
     'ratio': 2.125,
-    # 'ratio': 1.625,
 }
 sns.set_palette("muted")
 sns.set_context("notebook", font_scale=aspect['font_scale'])
@@ -30,9 +28,8 @@ sns.set_style({'font.family': 'serif', 'font.serif': 'Times New Roman'})
 def legend(fig, ax, x0=1,y0=1, direction = "v", padpoints = 3,**kwargs):
     otrans = ax.figure.transFigure
     h, l = ax.get_legend_handles_labels()
-    # col_lgd = plt.legend(
-    #     h[1:5], l[1:5], loc='lower center', ncol=4)
-    t = ax.legend(h[1:5], l[1:5], ncol=4, bbox_to_anchor=(x0,y0), loc=1, bbox_transform=otrans, handletextpad=-0.5, columnspacing=1.3, frameon=False, borderpad=0, **kwargs)
+
+    t = ax.legend(h[:4], l[:4], ncol=4, bbox_to_anchor=(x0,y0), loc=1, bbox_transform=otrans, handletextpad=-0.5, columnspacing=1.3, frameon=False, borderpad=0, **kwargs)
     for i in range(4):
         t.legendHandles[i]._sizes = [500]
 
@@ -45,12 +42,7 @@ def legend(fig, ax, x0=1,y0=1, direction = "v", padpoints = 3,**kwargs):
     tbox = t.get_window_extent().transformed(trans2)
     bbox = ax.get_position()
     if direction == "v":
-        # import ipdb; ipdb.set_trace()
         diff = (bbox.width - tbox.width) / 2
-        # print(diff)
-        # print(bbox)
-        # print(tbox)
-        # ax.set_position([bbox.x0 + diff, bbox.y1,bbox.x0 + diff + tbox.width, tbox.y1+bbox.y0])
         ax.set_position([tbox.x0, bbox.y1 - .05, tbox.x1, tbox.y1 + bbox.y0])
     else:
         ax.set_position([bbox.x0, bbox.y0, tbox.x0 - bbox.x0, bbox.height])
@@ -66,16 +58,7 @@ def plot_languages(df, family_column, folder=None):
 
     # Set the dimension of the figure
     my_dpi = 96
-    # fig, ax = plt.subplots(figsize=(2600 / my_dpi, 1800 / my_dpi), dpi=my_dpi, constrained_layout=True)
     fig, ax = plt.subplots(figsize=(2600 / my_dpi, 1800 / my_dpi), dpi=my_dpi)
-
-    # fig, ax = plt.subplots(figsize=(3, 2), constrained_layout=True)
-    # ax.set_title('title')
-    # ax.set_ylabel('y label')
-    # ax.set_xlabel('x label')
-    # ax.plot([0,1], [0,1], label='my text here')
-    # ax.legend(loc='center left', bbox_to_anchor=(1.1, 0.5))
-    # fig.savefig('figure03.pdf')
 
     # Make the background map
     m = Basemap(llcrnrlon=-180, llcrnrlat=-65, urcrnrlon=180, urcrnrlat=80)
@@ -89,16 +72,7 @@ def plot_languages(df, family_column, folder=None):
         x="Longitude", y="Latitude", hue=family_column, palette=colors,
         data=df, s=70, zorder=2, legend='brief', linewidth=0)
 
-    h, l = ax.get_legend_handles_labels()
     legend(fig, ax, borderaxespad=0.2, direction='v')
-    # col_lgd = plt.legend(
-    #     h[1:5], l[1:5], loc='lower center', ncol=4)
-    # for i in range(4):
-    #     col_lgd.legendHandles[i]._sizes = [200]
-    # col_lgd.legendHandles[1]._legmarker.set_markersize(200)
-    # col_lgd.legendHandles[1]._legmarker.set_markersize(200)
-    #     h[1:5], l[1:5], loc='lower left', ncol=4)
-    #     h[:4], l[:4], loc='best')
 
     fname = 'plot_languages-%s.pdf' % family_column
     if folder:
@@ -108,7 +82,6 @@ def plot_languages(df, family_column, folder=None):
 
 
 def main():
-    # df_continent = AsjpInfo.get_continent_df().set_index('ID')
     args = argparser.parse_args(csv_folder='cv')
     df = AsjpInfo.get_df(args.ffolder)
 
@@ -128,7 +101,6 @@ def main():
     folder = os.path.join(args.rfolder_base, 'plots')
 
     plot_languages(df, family_column='macroarea', folder=folder)
-    plot_languages(df, family_column='macroarea_orig', folder=folder)
 
 
 if __name__ == '__main__':
