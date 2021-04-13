@@ -68,7 +68,7 @@ If this code or the paper were usefull to you, consider citing the paper:
       Roark, Brian  and
       Wichmann, S{\o}ren  and
       Cotterell, Ryan  and
-      Bl\'{a}si, Damian",
+      Blasi, Dami\'{a}n",
     booktitle = "Proceedings of the 2021 Conference of the North {A}merican Chapter of the Association for Computational Linguistics: Human Language Technologies, Volume 1 (Long and Short Papers)",
     month = jun,
     year = "2021",
